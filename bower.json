@@ -1,0 +1,18 @@
+{
+  "name": "managerProject",
+  "private": true,
+  "version": "0.1.0",
+  "author": "jdcorrales",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.0.3",
+    "angular": "~1.4.9",
+    "angular-route": "^1.4.9"
+  }
+}

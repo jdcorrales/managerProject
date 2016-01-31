@@ -1,0 +1,121 @@
+<div class="container clearfix">
+	<div class="row">	
+		<% if (messages && messages['error'].length > 0) { %>
+		  <div class="alert alert-danger">
+		  <% messages['error'].forEach(function(message) { %>
+		    <%= message %>
+		    <br>
+		  <% }); %>
+		  </div>
+		  <br>
+		<% } %>
+		<% if (messages && messages['warning'].length > 0) { %>
+		  <div class="alert alert-warning">
+		  <% messages['warning'].forEach(function(message) { %>
+		    <%= message %>
+		    <br>
+		  <% }); %>
+		  </div>
+		  <br>
+		<% } %>
+		<% if (messages && messages['success'].length > 0) { %>
+		  <div class="alert alert-success">
+		  <% messages['success'].forEach(function(message) { %>
+		    <%= message %>
+		    <br>
+		  <% }); %>
+		  </div>
+		  <br>
+		<% } %> 
+	</div>
+	<div class="row col-md-8 col-md-offset-2">
+		<div class="row-fluid">
+		    <div class="main">
+		        <h1 id="main-title"><%= __('Ingrese usando') %></h1>
+		    	<div class="pull-left col-xs-6" style="padding : 0px !important;">
+			        <a href="/auth/google/" class="btn">Google+</a>
+			        <a href="/auth/facebook/" class="btn">Facebook</a>
+					<a href="/auth/dropbox/" class="btn">Dropbox</a>
+			        <a href="/auth/github/" class="btn">GitHub</a>		    		
+		    	</div>
+		        <div class="pull-right col-xs-6" style="padding : 0px !important;">
+			        <form action="/auth/local" method="POST" class="form-inline">
+						<div class="form-group col-md-5">
+							<label>Usuario</label>			    
+						    <input type="text" name="username" class="form-control" placeholder="Email">
+						</div>
+						<div class="form-group col-md-5">
+						    <label>Password</label>
+						    <input type="password" name="password" class="form-control" placeholder="Password">
+						</div>
+						<button type="submit" class="btn btn-xs btn-primary" style="margin-top: 30px;">Ingresar</button>
+					</form>		        	
+		        </div>
+		    </div>			
+		</div>
+		<div class="row">
+		    <div class="col-md-2 col-md-offset-5">
+				------ O ------
+		    </div>	
+		</div>
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-body">				
+					<form action="/auth/create" method="POST" class="form-horizontal" role="form">
+						<div class="form-group">
+							<legend>Registrese</legend>
+						</div>		
+
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">Nombres</label>
+						    <div class="col-sm-10">
+						      <input type="text" name="name" class="form-control" id="inputEmail3" placeholder="Email">
+						    </div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">Apellidos</label>
+						    <div class="col-sm-10">
+						      <input type="text" name="last_name" class="form-control" id="inputEmail3" placeholder="Email">
+						    </div>
+						</div>
+
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">Nombre de usuario</label>
+						    <div class="col-sm-10">
+						      <input type="text" name="username" class="form-control" id="inputEmail3" placeholder="Email">
+						    </div>
+						</div>
+
+						<div class="form-group">
+						    <label for="inputEmail3" class="col-sm-2 control-label">E-mail</label>
+						    <div class="col-sm-10">
+						      <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email">
+						    </div>
+						</div>	
+
+						<div class="form-group">
+						    <label for="inputEmail3" class="col-sm-2 control-label">Password</label>
+						    <div class="col-sm-10">
+						      <input type="password" name="password" class="form-control" id="inputEmail3" placeholder="Password">
+						    </div>
+						</div>	
+
+						<div class="form-group">
+						    <label for="inputEmail3" class="col-sm-2 control-label">Confirmar Password</label>
+						    <div class="col-sm-10">
+						      <input type="password" name="passwordconfirmation" class="form-control" id="inputEmail3" placeholder="Confirmar Password">
+						    </div>
+						</div>	
+
+						<div class="form-group">
+							<div class="col-sm-10 col-sm-offset-2">
+								<button type="submit" class="btn btn-primary">Registrarse</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>			
+		</div>
+	</div>
+</div>
