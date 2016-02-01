@@ -5,11 +5,13 @@ var messages =  { success: [], error: [], warning: [] };
 module.exports = {
 	
 	setMessage : function(key, message){
-		messages[key].push(message);
+		messages[key].push(message);		
 	},
 
-	getMessage : function(req){
+	getMessage : function(req){		
+		req.session.messages = null;
 		req.session.messages = messages;
+		messages = { success: [], error: [], warning: [] };
 	},
 
 	success: function(req, message) {

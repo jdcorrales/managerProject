@@ -11,13 +11,11 @@ module.exports = {
    attributes: {
    		name : {
   			type : 'string',
-  			required : true,  		
-  			defaultsTo : 'Jhon'
+  			required : true  			
   		},
   		last_name : {
   			type : 'string',
-  			required : true,
-  			defaultsTo: 'Doe'
+  			required : true
   		},
   		username : {
   			type : 'string',
@@ -49,6 +47,24 @@ module.exports = {
 	      return obj;
 	    }
 	},
+	validationMessages: {
+      	name: {
+  	    	required: 'El nombre es requerido'
+  	 	},
+  	 	last_name : {
+  	 		required : 'Los Apellidos son requeridos'
+  	 	},
+  	 	username : {
+  	 		required : 'El nombre de usuario es requerido',
+  	 		unique : 'E nombre de usuario no se encuentra disponible'  	 		
+  	 	},
+  	 	email : {
+  	 		required : 'El E-mail es requerido'
+  	 	},
+  	 	password : {
+  	 		required : 'Debe digitar el password'
+  	 	}
+    },
 	beforeCreate : function (values, next) 
   	{
 	    var password = values.password;

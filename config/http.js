@@ -35,26 +35,19 @@ var verifyHandlerLocal = function(username, password, done) {
           return done(false, false);
         }       
     });
-  });
-
-  /*User.findOne({ username: username }, function (err, user) {
-    if (err) { return done(err); }
-    if (!user) { return done(null, false); }
-    if (!user.verifyPassword(password)) { return done(null, false); }
-    return done(null, user);
-  });*/
+  });  
 }
 
 var verifyHandlerGoogle = function (token, tokenSecret, profile, done) {
   process.nextTick(function () {        
     var username = profile.emails[0].value.split('@');        
         username = username[0];       
-    User.findOne({username:username}).exec(function (err, userfind) {
+    User.findOne({username:username}).exec(function (err, userfind) {        
         if (userfind) {
           bcrypt.compare(profile.id.toString(), userfind.providerid, function (err, res) {
             if (!res) {
-              var usernameError = 'El nombre de usuario ya se en cuentra registrado';
-              return done(null, false, usernameError);
+              flashService.setMessage('warning','El nombre de usuario ya se en cuentra registrado');
+              return done(null, null);
             } else {
               return done(null, userfind);
             }            
@@ -73,8 +66,8 @@ var verifyHandlerGoogle = function (token, tokenSecret, profile, done) {
           };
           User.create(providerUserProfile, function (err, user) {                
             if(err){
-              var usernameError = 'Error al crear el usuario.';
-              return done(usernameError, false);
+              flashService.setMessage('warning','Error al crear el usuario.');
+              return done(null, false);
             }else{
               return done(null, user);              
             }
@@ -89,9 +82,9 @@ var verifyHandlerGithub = function (token, tokenSecret, profile, done) {
     User.findOne({username:profile.username}).exec(function (err, userfind) {
         if (userfind) {
           bcrypt.compare(profile.id.toString(), userfind.providerid, function (err, res) {
-            if (!res) {
-              var usernameError = 'El nombre de usuario ya se en cuentra registrado';
-              return done(null, false, usernameError);
+            if (!res) {              
+              flashService.setMessage('warning','El nombre de usuario ya se en cuentra registrado');
+              return done(null, false);
             } else {
               return done(null, userfind);
             }            
@@ -130,9 +123,9 @@ var verifyHandlerGithub = function (token, tokenSecret, profile, done) {
             passwordconfirmation : password
           };
           User.create(providerUserProfile, function (err, user) {
-            if(err){
-              var usernameError = 'Error al crear el usuario.';
-              return done(usernameError, false);
+            if(err){              
+              flashService.setMessage('warning','Error al crear el usuario.');
+              return done(null, false);
             }else{
               return done(null, user);              
             }
@@ -150,9 +143,9 @@ var verifyHandlerDropbox = function (token, tokenSecret, profile, done) {
     User.findOne({username:username}).exec(function (err, userfind) {        
         if (userfind) {
           bcrypt.compare(profile.id.toString(), userfind.providerid, function (err, res) {
-            if (!res) {
-              var usernameError = 'El nombre de usuario ya se en cuentra registrado';
-              return done(null, false, usernameError);
+            if (!res) {              
+              flashService.setMessage('warning','El nombre de usuario ya se en cuentra registrado');
+              return done(null, false);
             } else {
               return done(null, userfind);
             }            
@@ -171,9 +164,9 @@ var verifyHandlerDropbox = function (token, tokenSecret, profile, done) {
             passwordconfirmation : password
           };          
           User.create(providerUserProfile, function (err, user) {
-            if(err){
-              var usernameError = 'Error al crear el usuario.';
-              return done(usernameError, false);
+            if(err){              
+              flashService.setMessage('warning','Error al crear el usuario.');
+              return done(null, false);
             }else{
               return done(null, user);              
             }
@@ -220,9 +213,9 @@ var verifyHandlerFacebook = function (token, tokenSecret, profile, done) {
     User.findOne({username:username.toLowerCase()}).exec(function (err, userfind) {      
       if (userfind) {
         bcrypt.compare(profile.id.toString(), userfind.providerid, function (err, res) {
-          if (!res) {
-            var usernameError = 'El nombre de usuario ya se en cuentra registrado';
-            return done(null, false, usernameError);
+          if (!res) {            
+            flashService.setMessage('warning','El nombre de usuario ya se en cuentra registrado');
+            return done(null, false);
           } else {
             return done(null, userfind);
           }            
@@ -242,8 +235,8 @@ var verifyHandlerFacebook = function (token, tokenSecret, profile, done) {
 
         User.create(providerUserProfile, function (err, user) {
           if(err){
-            var usernameError = 'Error al crear el usuario.';
-            return done(usernameError, false);
+            flashService.setMessage('warning','Error al crear el usuario.');
+            return done(null, false);
           }else{
             return done(null, user);              
           }

@@ -9,7 +9,7 @@ var passport        = require('passport'),
     bcrypt          = require('bcrypt'),
     flashService    = require('../services/FlashService.js'),
     authService     = require('../services/AuthService.js'),
-    sessionService  = require('../services/SessionService.js');
+    sessionService  = require('../services/SessionService.js');    
 
 var AuthController = {
 
@@ -33,8 +33,8 @@ var AuthController = {
             password : req.param('password'),
             passwordconfirmation : req.param('passwordconfirmation')
         };
-        User.create(userData, function (err, user) {
-                authService.passportAuthenticate(req, res, err, user, 'con el servidor');
+        User.create(userData, function (err, user) {                      
+            authService.passportAuthenticate(req, res, err, user, 'con el servidor');
         });
     },
 
@@ -42,7 +42,7 @@ var AuthController = {
         passport.authenticate('local', { 
             failureRedirect: '/login'             
         },
-        function (err, user) {
+        function (err, user) {            
             authService.passportAuthenticate(req, res, err, user, 'con el servidor');            
         })(req, res);
     },
