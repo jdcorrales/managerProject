@@ -1,0 +1,14 @@
+<section data-ng-init="findOne()">
+	<h1 data-ng-bind="article.title"></h1>
+	<div data-ng-show="authentication.user.id == article.creator.id">
+		<a href="/#!/article/edit/{{article.id}}">Editar</a>
+		<a href="#" data-ng-click="delete()">Eliminar</a>
+	</div>
+	<small>
+		<em>postear</em>
+		<em data-ng-bind="article.createdAt | date:'mediumDate'"></em>
+		<em>by</em>
+		<em data-ng-bind="article.creator.username"></em>
+	</small>
+	<p data-ng-bind="article.content"></p>
+</section>

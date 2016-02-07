@@ -27,10 +27,15 @@ module.exports.policies = {
   ***************************************************************************/
   //'*': ,
 
-   '*': [true, 'flash', 'authenticated'],
+
+  '*': [true, 'flash', 'authenticated'],
 
   'auth': {
     '*': 'flash'
+  },
+
+  'article' : {
+    '*' : 'flash'
   }
   // '*': true,
 

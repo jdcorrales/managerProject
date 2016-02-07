@@ -29,12 +29,12 @@
     -->
 
     <!--STYLES-->
-    <link rel="stylesheet" href="/styles/importer.css">
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
 
-  <body>
+  <body data-ng-app="managerProjectApp">
     <%- body %>
 
 
@@ -89,7 +89,21 @@
     -->
 
     <!--SCRIPTS-->
+    <script src="/lib/jquery/dist/jquery.js"></script>
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/lib/angular/angular.js"></script>
+    <script src="/lib/angular-route/angular-route.js"></script>
+    <script src="/lib/angular-resource/angular-resource.js"></script>
+    <script src="/app/modules/ArticleModule.js"></script>
+    <script src="/app/modules/ClientModule.js"></script>
+    <script src="/app/modules/UserModule.js"></script>
+    <script src="/app/controllers/ArticleController.js"></script>
+    <script src="/app/controllers/ClientController.js"></script>
+    <script src="/app/routes/ArticleRoute.js"></script>
+    <script src="/app/routes/ClientRoute.js"></script>
+    <script src="/app/services/ArticleService.js"></script>
+    <script src="/app/services/UserService.js"></script>
+    <script src="/app.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

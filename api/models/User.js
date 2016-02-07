@@ -41,6 +41,10 @@ module.exports = {
 	    passwordconfirmation : {
 	      type : 'string'
 	    },
+	    articles:{
+            collection: 'article',
+            via: 'creator'
+        },
 	    toJSON: function() {
 	      var obj = this.toObject();
 	      delete obj.passwordconfirmation;      

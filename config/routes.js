@@ -32,9 +32,18 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
+  /*'/' : {
+    controller : 'auth',
+    action     : 'index'
+  },*/
+  
   '/' : {
     controller : 'home'
   },
+
+  /*'/' : {
+    controller : 'home'
+  },*/
 
   '/login' : {
     controller : 'auth',
@@ -44,7 +53,36 @@ module.exports.routes = {
   '/logout' : {
     controller : 'auth',
     action     : 'logout'
-  }
+  },
+
+  'GET /api/article' : {
+    controller : 'article',
+    action     : 'list'
+  },
+
+  'GET /api/article/:articleId' : {
+    controller : 'article',
+    action     : 'findOne'
+  },
+
+  'POST /api/article' : {
+    controller : 'article',
+    action     : 'create'
+  },
+
+
+  'PUT /api/article/:articleId' : {
+    controller : 'article',
+    action     : 'update'
+  },
+
+  'DELETE /api/article/:articleId' : {
+    controller : 'article',
+    action     : 'delete'
+  },
+
+
+
 
   /***************************************************************************
   *                                                                          *
